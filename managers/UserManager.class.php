@@ -74,12 +74,12 @@ class UserManager
         }
     }
 
-    public function deleteUser(object $user): void
+    public function deleteUser(int $id): void
     {
         try {
             $deleteQuery = $this->db->prepare('DELETE FROM `users` WHERE `users`.`id` = :id');
             $parameters = [
-                'id' => $user->getID()
+                'id' => $id
             ];
             $deleteQuery->execute($parameters);
         } catch (PDOException $e) {
